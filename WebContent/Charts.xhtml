@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+	<h:outputStylesheet name="common-style.css" library="css" />
+    </h:head>
+    <h:body>
+    	<ui:composition template="/template/common/commonLayout.xhtml"> 
+    	
+    		<ui:define name="content">
+    		
+				<h:form id="form">
+				<h:panelGrid columns="1" style="float:right" >
+					 <p:commandButton value="1er Cuatrimestre" type="submit"  
+           					action="#{hd.createCategoryModelPrimerTrimestre}" ajax="false" style="float:right" />
+           			 <p:commandButton value="2do Cuatrimestre" type="submit"  
+           					action="#{hd.createCategoryModelDosTrimestre}" ajax="false" style="float:right" />
+           			 <p:commandButton value="3er Cuatrimestre" type="submit"  
+           					action="#{hd.createCategoryModelTresTrimestre}" ajax="false" style="float:right" />		 			
+				</h:panelGrid>
+				<center>
+					<h:panelGrid columns="1">  	    
+					    <p:barChart id="basic" value="#{hd.categoryModelunoTrimestre}" legendPosition="ne"  
+					                title="Porcentaje de visitas por mes del #{hd.nomColegio} del primer cuatrimestre" min="0" max="100" style="width:800px;margin-top:20px" animate="true" xaxisLabel="Mes" yaxisLabel="Porcentaje Visitas" />
+					     <h:outputText value="Total de visitas en la web para el primer Cuatrimestre: #{hd.totalVisitas}" />               
+					</h:panelGrid>
+				</center>                
+				</h:form>                 					
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

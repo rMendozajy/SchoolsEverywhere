@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:body>
+    <ui:composition template="/template/common/commonLayout.xhtml">
+    
+    <ui:define name="content">
+    
+    <h:form id="frmLogin" style="width:270px;margin:0px auto">    
+   	  <p:panel header="Ingrese sus datos para logearse: " >	
+        <h:panelGrid columns="1">  
+          <h:outputText for="userNickname" value="Usuario: " />  
+            <p:inputText value="#{LOGIN.nnickName}" id="userNickname" style="width:200px"/>
+            <p:message for="userNickname"></p:message> 
+            <h:outputLabel for="password" value="Contraseña: " />  
+            <p:password id="password" value="#{LOGIN.tcontraseniaUsuario}" style="width:200px"/> 
+            <p:message for="password"></p:message>  
+            <p:commandButton value="Ingresar" type="submit"  
+           					action="#{LOGIN.verificalogin}" ajax="false" style="float:right" />   
+       </h:panelGrid> 
+       
+                   
+       </p:panel>     
+       
+       <h:panelGrid columns="2" cellpadding="15">   
+           <h:link value="¿No estás registrado?" outcome="register" style="font-size:small"/>
+           <h:link value="Volver a la página principal" outcome="default" style="font-size:small"/>
+       </h:panelGrid>
+       <p:messages for="validar" />             
+    </h:form>
+    </ui:define>
+    </ui:composition>
+  
+  </h:body>
+</html>

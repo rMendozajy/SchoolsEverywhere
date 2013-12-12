@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+<h:head>
+<h:outputStylesheet name="common-style.css" library="css" />
+</h:head>
+	
+<h:body>
+		<ui:composition template="/template/common/commonLayout.xhtml">
+    		<ui:define name="content">	
+	<h:form prependId="false"> 
+	<p:growl id="messages" showDetail="true"/>
+	
+	<p:panel header="Actualizar Colegio">
+		<h:panelGrid  columns="2" columnClasses="column" cellpadding="5">
+					
+			<h:outputText value="Nombre Colegio:  " style="width:130"/>
+			<p:inplace  id="nombreImplace" editor="true">
+				<p:inputText value="#{LOGIN.usuario.colegio.ncolegio}" id="nombre" required="true" label="text">
+				<f:validateLength minimum="2" maximum="20" />
+				<f:validateRequired />
+				</p:inputText>
+				<h:message for="nombre" style="color:red" /> 
+			</p:inplace>
+			<h:outputText value="Descripcion: "/>
+			<p:inplace id="descriptionImplace" editor="true">
+				<p:inputText  value="#{LOGIN.usuario.colegio.tdescripcionColegio}" id="descripcion" required="true" label="text" style="height:150">
+				<f:validateLength minimum="2" maximum="1500" />
+				<f:validateRequired />
+				</p:inputText>
+				<h:message for="descripcion" style="color:red" /> 
+			</p:inplace>
+			<h:outputText value="Fundacion: "/>
+			<p:inplace id="fundationImplace" editor="true">
+				
+				<p:inputText value="#{LOGIN.usuario.colegio.dfundacionColegio}" id="fundation" required="true" label="text">
+				<f:validateLength minimum="2" maximum="50" />
+				<f:validateRequired />
+				</p:inputText>
+				<h:message for="fundation" style="color:red" /> 
+			</p:inplace>
+			<h:outputText value="Telefono: "/>
+			<p:inplace id="telefonoImplace" editor="true">
+				
+				<p:inputText value="#{LOGIN.usuario.colegio.telefonoPrincipalColegio}" id="telefono" required="true" label="text">
+				<f:validateLongRange  minimum="1000000" maximum="9999999" />
+				<f:validateRequired />
+				</p:inputText>
+				<h:message for="telefono" style="color:red" />
+			</p:inplace>
+			<h:outputText value="Url: "/>
+			<p:inplace  id="urlImplace" editor="true">
+				
+				<p:inputText value="#{LOGIN.usuario.colegio.tpaginaWeb}" id="url" required="true" label="text">
+				<f:validateLength minimum="10" maximum="50" />
+				<f:validateRequired />
+				</p:inputText>
+				<h:message for="url" style="color:red" /> 
+			</p:inplace>
+			
+			<h:panelGrid columns="2" cellpadding="1">
+ 				
+            	<p:commandButton value="Enviar" type="submit" ajax="false" action="#{ACTUALIZAR.Actualizar}" actionListener="#{CAPTCHA.submit}" />     
+          
+      		</h:panelGrid>
+		</h:panelGrid>
+	</p:panel>
+</h:form>
+</ui:define>
+</ui:composition>
+</h:body>
+</html>

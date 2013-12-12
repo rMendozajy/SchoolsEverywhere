@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:body>
+    	<ui:composition template="/template/common/commonLayout.xhtml">
+ 
+    		<ui:define name="content">
+
+					
+							<div class="contain" style="border:1px solid;background:#fff url(images/logos/#{COLEGIOBEAN.selectedSchool.turlImagen}) center center no-repeat;background-size: contain; width:210px; height:217px; margin:0 auto; float:left" ></div>
+							<h:panelGrid  columns="2" cellpadding="5">
+							<h:panelGrid  columns="2" cellpadding="5">
+								<h:outputLabel for="name" value="Nombre: " />
+								<h:outputText id="name" value="#{COLEGIOBEAN.selectedSchool.ncolegio}" />
+								
+								<h:outputLabel for="net" value="Red de colegios: " />
+								<h:outputText id="net" value="#{COLEGIOBEAN.selectedSchool.redColegio.nredColegio}" />
+								<h:outputLabel for="type" value="Tipo: " />
+								<h:outputText id="type" value="#{COLEGIOBEAN.selectedSchool.tipoColegio.ntipoColegio}" />
+								<h:outputLabel for="origin" value="Origen: " />
+								<h:outputText id="origin" value="#{COLEGIOBEAN.selectedSchool.origen.nidiomaOrigen}" />
+								<h:outputLabel for="telefono" value="Teléfono: " />
+								<h:outputText id="telefono" value="#{COLEGIOBEAN.selectedSchool.telefonoPrincipalColegio}" />
+								<h:outputLabel for="fundacion" value="Fecha de fundación: " />
+								<h:outputText id="fundacion" value="#{COLEGIOBEAN.selectedSchool.dfundacionColegio}" />
+								<h:outputLabel value="Página web: " />
+								<a id="pagweb" href="#{COLEGIOBEAN.selectedSchool.tpaginaWeb}">#{COLEGIOBEAN.selectedSchool.tpaginaWeb}</a>
+								
+							</h:panelGrid >
+								<p:gmap center="#{COLEGIOBEAN.selectedSchool.posX}, #{COLEGIOBEAN.selectedSchool.posY}" zoom="15" type="terrain" style="width:400px;height:250px" />
+							
+							</h:panelGrid>
+							<h:panelGrid columns="2" cellpadding="5">
+							
+							<h:outputLabel for="descripcion" value="Descripción: " />
+								<h:outputText id="descripcion" value="#{COLEGIOBEAN.selectedSchool.tdescripcionColegio}" />
+							</h:panelGrid>
+							<h:panelGrid  columns="2" cellpadding="5" style="width:100%;" styleClass="info">
+							<h:column >
+							<h3>Lista de convenios</h3>
+							<p:dataList value="#{COLEGIOBEAN.selectedSchool.convenioColegios}" var="conveniocolegio"  type="definition">
+									#{conveniocolegio.convenio.nconvenio}
+									<f:facet name="description">
+									<h:outputText value="#{conveniocolegio.convenio.tconvenio}"></h:outputText>
+							</f:facet>
+							</p:dataList>
+							</h:column>
+							<h:column>
+							<h3>Lista de personas que los tienen en sus favoritos </h3>
+							<p:dataList value="#{COLEGIOBEAN.selectedSchool.colegioUsuarios}" var="colegiousuarios"  type="definition">
+							#{colegiousuarios.usuario.nnickName}
+							</p:dataList>
+							</h:column>
+							</h:panelGrid>
+<h:form>
+<h3>Comentario: </h3>
+<h:panelGrid  columns="3" styleClass="info">
+<h:column>
+<p:inputTextarea id="coment" rows="5" cols="50" maxlength="140" minQueryLength="10" value="#{COMENTAR.texto}"/>  
+<p:watermark for="coment" value="Ingrese un comentario..." />  
+</h:column>
+<h:column>
+<p:rating value="#{COMENTAR.rating}"   stars="5" />  
+</h:column>
+<h:column>
+<p:commandButton actionListener="#{COMENTAR.addComent}" ajax="false" value="Comentar" type="submit" update="lstcomentarios"/>    
+</h:column>
+</h:panelGrid>
+<p:messages for="validar" />
+</h:form>
+     
+
+<h3>Comentarios Realizados: </h3>
+<p:dataList  id="lstcomentarios" value="#{COMENTAR.comentarios}" var="comentario"  type="definition">
+#{comentario.usuario.nnickName}  -  #{comentario.dcomentario} 
+<f:facet name="description">
+<h:outputText value="#{comentario.tcomentario}"></h:outputText>
+</f:facet>
+</p:dataList>
+    		</ui:define>
+ 
+    	</ui:composition>
+    	
+    </h:body>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+  <body>
+    	
+    <ui:composition>
+    <h:form styleClass="formsearch">  
+   	 <h:panelGrid columns="2">		   
+    	<h:column>
+		  <a class="logo" href="default.xhtml">Buenos Colegios</a>
+		</h:column>	
+		<h:column >
+		<h:panelGrid columns="2" width="380">
+		<h:column>
+		  
+            <p:commandButton id="login" style="float:right;visibility:#{LOGIN.logeado}" value="Login" action="#{LOGIN.login}" type="submit" ajax="false"/>  
+    	  
+		</h:column>
+		<h:column >
+		 
+            <p:commandButton id="register" style="float:left;visibility:#{LOGIN.logeado}" value="Register"  action="#{LOGIN.registrar}" type="submit" ajax="false"/>  
+	     
+		</h:column>
+		<h:column >
+		 
+            <h:outputText id="usuario" style="float:right;visibility:#{LOGIN.nologeado}" value="Bienvenido(a): #{LOGIN.saludo}" styleClass="name" />  
+    	  
+		</h:column>
+		<h:column >
+		  
+            <p:commandButton id="logout" style="float:left;visibility:#{LOGIN.nologeado}" value="Logout"  action="#{LOGOUT.logoutSession}" type="submit" ajax="false"/>  
+	     
+	      </h:column>
+	      </h:panelGrid>
+		</h:column>
+      </h:panelGrid>  
+	</h:form>
+		
+    
+    <h:form>
+	<p:megaMenu styleClass="menu">
+	  <p:submenu label="Colegios" >
+	    <p:column>
+		  <p:submenu >
+		    <p:menuitem value="Ver todos los colegios" url="colegios.xhtml" />
+		  </p:submenu>
+		  <p:submenu >
+		    <p:menuitem value="Buscar colegios por nombre" url="buscar.xhtml" />
+		  </p:submenu>
+		</p:column>
+		<p:column>				
+		  <p:graphicImage value="/images/map.png" width="70"/>
+		</p:column>
+	  </p:submenu>
+	  <p:submenu label="Inicial">
+		<p:column>
+		  <p:submenu >
+			<p:menuitem value="Cunas" url="cunas.xhtml" />						
+		  </p:submenu>
+		  <p:submenu >
+			<p:menuitem value="Guarderias" url="guarderias.xhtml" />						
+		  </p:submenu>
+		  <p:submenu >
+		    <p:menuitem value="Nidos" url="nidos.xhtml" />						
+		  </p:submenu>
+		  <p:submenu >
+		    <p:menuitem value="Estimulacion" url="estimulacion.xhtml" />						
+		  </p:submenu>
+		</p:column>
+	  </p:submenu>
+	  <p:submenu label="Primaria">
+	    <p:column>
+		  <p:submenu >
+		    <p:menuitem value="Ver todos los colegios de nivel primaria" url="primaria.xhtml" />
+		  </p:submenu>
+		</p:column>
+	  </p:submenu>
+	  <p:submenu label="Secundaria">
+		<p:column>
+		  <p:submenu >
+			<p:menuitem value="Ver todos los colegios de nivel primaria" url="secundaria.xhtml" />
+		  </p:submenu>
+		</p:column>
+	  </p:submenu>
+	  <p:submenu label="Ed. Especial">
+	    <p:column>
+		  <p:submenu >
+			<p:menuitem value="Ver todos los colegios de educación especial" url="especial.xhtml" />
+		  </p:submenu>
+		</p:column>
+	  </p:submenu>
+	</p:megaMenu>
+	</h:form>
+  </ui:composition>
+</body>
+</html>

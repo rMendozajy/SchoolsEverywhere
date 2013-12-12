@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+     <h:body>
+    <ui:composition template="/template/common/commonLayout.xhtml">
+    <ui:define name="content">
+    <h:form id="frmRegistro" style="width:360px; margin:0 auto">
+        
+    <p:panel header="Registro de nuevo usuario: " >
+     	
+   	<h:panelGrid columns="1" cellpadding="1"> 
+   	        <h:panelGrid columns="1" cellpadding="1"> 
+            <h:outputText value="(*) Usuario: " />  
+            <p:inputText style="width:250px; margin-left:20px" value="#{REGISTRAR.nnickName}" required="true" validatorMessage="Ingrese un usuario entre (8-15) carácteres" requiredMessage="Ingrese un usuario" id="userNickname">
+            <f:validateLength minimum="8" maximum="15" />
+			</p:inputText>
+		    <p:message for="userNickname" style="color:red" /> 
+		                  
+                
+            <h:outputLabel value="(*) Contraseña: " />  
+            <p:password style="width:250px; margin-left:20px" id="password" value="#{REGISTRAR.tcontraseniaUsuario}" required="true" requiredMessage="Ingrese una contraseña" feedback="true"   
+                        promptLabel="Ingrese contraseña" weakLabel="Baja"  
+                       goodLabel="Media" strongLabel="Alta">
+            <f:validateRequired />
+            </p:password>
+            <p:message for="password" style="color:red"/>                             
+              
+               
+			<h:outputText value="(*) Nombre : " />  
+            <p:inputText style="width:250px; margin-left:20px" value="#{REGISTRAR.nnombreUsuario}" required="true" requiredMessage="Ingrese un nombre" id="userName">    
+         		<f:validateLength minimum="2" maximum="20" />
+				<f:validateRequired />
+		    </p:inputText>		    
+		  	<p:message for="userName" style="color:red"/>  
+            
+            
+            <h:outputText value="(*) Apellidos : " />  
+            <p:inputText style="width:250px; margin-left:20px" value="#{REGISTRAR.napellidoUsuario}" required="true" requiredMessage="Ingrese un apellido" id="userLastname">
+	            <f:validateLength minimum="2" maximum="20" />
+				<f:validateRequired />
+			</p:inputText>		
+			<p:message for="userLastname" style="color:red"/>
+            				
+			
+            <h:outputText value="(*) e-mail: " />  
+            <p:inputText style="width:250px; margin-left:20px" id="email" value="#{REGISTRAR.ncorreoUsuario}" required="true" requiredMessage="Ingrese un email" label="Email" validatorMessage="Formato inválido ( usuario@ejemplo.com )">
+    		<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+    		</p:inputText>	   
+    		<p:message for="email" style="color:red"/>
+    		</h:panelGrid>
+        	
+          <p:captcha id="reCaptcha" label="Captcha" validatorMessage="Palabras ingresadas incorrectas" requiredMessage="Ingrese las palabras del reCaptcha"/>
+  			 <p:message for="reCaptcha" style="color:red"/> 
+     <h:panelGrid columns="2" cellpadding="1">
+ 			<p:commandButton value="Limpiar" ajax="false" type="reset" style="margin-left:150px"/>  
+            <p:commandButton value="Enviar" type="submit" ajax="false" action="#{REGISTRAR.registrar}" actionListener="#{CAPTCHA.submit}" />     
+            
+       </h:panelGrid>
+            <p:messages for="registrar" />     
+  </h:panelGrid>
+   
+  			                  
+  </p:panel> 	
+  
+  <h:panelGrid columns="3" cellpadding="10">   
+  <h:outputText value="(*) Campos obligatorios" style="font-size:small"/>
+  <h:link value="¿Ya eres usuario?" outcome="login" style="font-size:small"/>
+  <h:link value="Volver a la página principal" outcome="default" style="font-size:small"/>
+  </h:panelGrid>  
+  </h:form>  
+  </ui:define>
+  </ui:composition>
+  
+  </h:body>
+</html>

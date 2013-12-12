@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+	<h:outputStylesheet name="common-style.css" library="css" />
+    </h:head>
+    <h:body>
+    	<ui:composition template="/template/common/commonLayout.xhtml">
+    		<ui:define name="content">	
+				<h:form>  		  
+				    <p:dataTable id="dataTable" var="school" value="#{tableBean.schools}" widgetVar="schoolsTable"   
+				            emptyMessage="Ningún colegio se encontró con los criterios dados" filteredValue="#{tableBean.filteredSchools}">  
+				    	<f:facet name="header">  
+				            <p:outputPanel>  
+				                <h:outputText value="Buscar por todos los campos: " />  
+				                <p:inputText id="globalFilter" onkeyup="schoolsTable.filter()" style="width:400px" />  
+				            </p:outputPanel>  
+				        </f:facet>  
+				        <p:column id="modelColumn" filterBy="#{school.name}"   
+				                headerText="Nombre" footerText="contains"  
+				                filterMatchMode="contains">  
+				            <h:outputText value="#{school.name}" />  
+				        </p:column>  			
+				        
+				        <p:column id="yearColumn" filterBy="#{school.name}"  
+				                headerText="Origen" footerText="startsWith">  
+				            <h:outputText value="#{school.name}" />  
+				        </p:column>  
+				        <p:column id="colorColumn" filterBy="#{school.name}"  
+				                headerText="Red de colegios" footerText="endsWith" filterMatchMode="endsWith">  
+				            <h:outputText value="#{school.name}" />  
+				        </p:column>  
+				    </p:dataTable>  
+				</h:form>        					
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

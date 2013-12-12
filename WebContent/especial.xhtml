@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:body>
+    
+    	<ui:composition template="/template/common/commonLayout.xhtml">
+    		<ui:define name="content">
+    			<h:form id="form">
+	    			<h:panelGrid columns="2">  
+						<h:column>
+							<h:outputText value="Ordenar por: " style="font-size:18px;"/>  
+						</h:column>
+						<h:column>
+							<p:selectOneMenu value="#{ESPECIAL.selectedField}" effect="fade" >  
+			            		<f:selectItems value="#{ESPECIAL.sortingFields}" var="field" itemLabel="#{field}" itemValue="#{field}"/>  
+			            		<p:ajax event="change" update="grid" listener="#{ESPECIAL.sortSchools}" />
+			        		</p:selectOneMenu> 
+						</h:column>
+	    			</h:panelGrid>  
+
+			    	
+			        
+    
+
+					<p:dataGrid id="grid" var="school" value="#{ESPECIAL.schools}" columns="3"
+						rows="12" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="9,12,15" >
+				
+				        <p:panel header="#{school.ncolegio}" style="text-align:center">
+				            <h:panelGrid columns="1" style="width:100%; background:#fff !important; height:270px">
+				            	
+				                <div class="contain" style="background:url(images/logos/#{school.turlImagen}) center center no-repeat;background-size: contain; width:210px; height:217px; margin:0 auto" ></div> 
+								<p:rating value="#{school.qvaloracionPromedio}" readonly="true" style="margin:0 auto;width:80px;"/>
+				                <p:commandLink action="#{COLEGIOBEAN.showDetails}" title="Ver detalle">
+				                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" /> 
+				                    <f:setPropertyActionListener value="#{school}" target="#{COLEGIOBEAN.selectedSchool}" />
+				                </p:commandLink>          
+				            </h:panelGrid>
+				        </p:panel>
+			
+					</p:dataGrid>
+				</h:form>  					
+    		</ui:define>
+ 
+    	</ui:composition>
+    </h:body>
+   
+</html>

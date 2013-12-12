@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+	
+    </h:head>
+    <h:body>
+    	<ui:composition template="/template/common/commonLayout.xhtml">
+ 
+    		<ui:define name="content">
+    			<div class="main-slider">
+    			<div class="center">
+					<p:imageSwitch effect="fade">
+					    <ui:repeat value="#{WELCOME.images}" var="image">
+					        <p:graphicImage value="/images/#{image}" width="550" height="256" />
+					    </ui:repeat>
+					</p:imageSwitch>
+					<h:outputText style="width: 400px;position: absolute;margin: -220px 0 0 600px;" 
+            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.  
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
+            hrough Michael's life the nature of the family business becomes clear." />  
+				</div>
+				
+				</div>
+	    <h:panelGrid columns="1" bgcolor="#9BBA1F" style="float:left; padding:10px; margin:330px 10px 10px 0" width="300"> 
+     
+        <p:graphicImage value="/images/inicial7.jpg" width="276" />  
+        <div style="margin:0 0 10px 0"></div>
+        <h:outputText  
+            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.  
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
+            hrough Michael's life the nature of the family business becomes clear." />  
+    </h:panelGrid>  
+    <h:panelGrid columns="1" bgcolor="#FFA200" style="float:left; padding:10px; margin:330px 10px 10px 10px" width="300">  
+        <p:graphicImage value="/images/inicial7.jpg" width="276" /> 
+        <div style="margin:0 0 10px 0"></div> 
+        <h:outputText  
+            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.  
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
+            hrough Michael's life the nature of the family business becomes clear." />  
+    </h:panelGrid>  
+    <h:panelGrid columns="1" bgcolor="#CA3535" style="float:left; padding:10px;margin:330px 0px 10px 10px" width="300">  
+        
+        <p:graphicImage value="/images/inicial7.jpg" width="276" />
+        <div style="margin:0 0 10px 0"></div>
+ 
+        <h:outputText 
+            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.  
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
+            hrough Michael's life the nature of the family business becomes clear." />  
+    </h:panelGrid>  
+            					
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
