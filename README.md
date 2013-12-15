@@ -7,7 +7,7 @@ The main motivation was to create some kind of social network for schools. For e
 Technology Involved
 =============================
 
-1) Java EE
+1) J2EE
 
 2) JSF
 
