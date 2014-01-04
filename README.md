@@ -35,7 +35,7 @@ USA Web Page: http://www.greatschools.org/
 
 Contributing
 =============================
-Pull requests are welcome
+Pull requests are welcome.
 
 
 References
